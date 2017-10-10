@@ -46,16 +46,37 @@ def zernike_compute(coefficients, X, Y):
 
 
 def generate_wavefront(coefficients, x_res, y_res):
-    # Make data.
-    X = np.arange(-1, 1, 0.005)
-    Y = np.arange(-1, 1, 0.005)
+    # Generate X Y coords
+    X = np.arange(-1, 1, 2/x_res)
+    Y = np.arange(-1, 1, 2/y_res)
 
     X, Y = np.meshgrid(X, Y)
-    Z = zernike_compute([0, 0, 0, 0, 0, 0, 0.3], X, Y)
+    Z = zernike_compute(coefficients, X, Y)
     return Z
 
-def map_to_zernike(image, x_res, y_res):
+def map_to_zernike(image):
+    y_res = len(image)
+    x_res = len(image[0])
 
+    # Generate X Y coords
+    X = np.arange(-1, 1, 2/x_res)
+    Y = np.arange(-1, 1, 2/y_res)
+    X, Y = np.meshgrid(X, Y)
+
+    coefficients = [0 for i in range(15)]
+
+    pix_count = 0
+
+    for xr, yr, zr in zip(X, Y, image):
+        for x, y, z in zip(xr, yr, zr):
+            rho = math.sqrt(x**2 + y**2)
+            theta = math.atan2(y, x)
+            if rho > 1:
+                continue
+            coefficients = [coefficients[i] + z*zernikefunctions[i+1](rho, theta) for i in range(15)]
+            pix_count += 1
+
+    return [coef/pix_count for coef in coefficients]
 
 # Plot the surface.
 #surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
@@ -71,7 +92,10 @@ def map_to_zernike(image, x_res, y_res):
 
 
 if __name__ == "__main__":
-    Z = generate_wavefront([0, 0, 0, 0, 0, 0, 0.3], 1000, 1000)
+    coefs = [0, 0.3, 0.3, 0.3, 0, 0.2, 0.1]
+    Z = generate_wavefront(coefs, 1000, 1000)
+    coefs2 = map_to_zernike(Z)
+    print('Error = ', ['{:.2f}%'.format(100*math.fabs(c1-c2)/(math.fabs(c1) if c1 != 0 else 1)) for c1, c2 in zip(coefs, coefs2)])
     fig = plt.figure()
     plt.imshow(Z, cmap=cm.coolwarm)
     plt.show()
