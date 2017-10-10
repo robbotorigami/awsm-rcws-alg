@@ -1,12 +1,7 @@
-from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 from matplotlib import cm
-from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import numpy as np
 import math
-
-
-fig = plt.figure()
 
 zernikefunctions = {
     1 : lambda rho, theta: 1,
@@ -59,6 +54,8 @@ def generate_wavefront(coefficients, x_res, y_res):
     Z = zernike_compute([0, 0, 0, 0, 0, 0, 0.3], X, Y)
     return Z
 
+def map_to_zernike(image, x_res, y_res):
+
 
 # Plot the surface.
 #surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
@@ -72,6 +69,9 @@ def generate_wavefront(coefficients, x_res, y_res):
 # # Add a color bar which maps values to colors.
 # fig.colorbar(surf, shrink=0.5, aspect=5)
 
-plt.imshow(Z, cmap=cm.coolwarm)
 
-plt.show()
+if __name__ == "__main__":
+    Z = generate_wavefront([0, 0, 0, 0, 0, 0, 0.3], 1000, 1000)
+    fig = plt.figure()
+    plt.imshow(Z, cmap=cm.coolwarm)
+    plt.show()
