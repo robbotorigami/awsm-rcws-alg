@@ -6,7 +6,7 @@ from matplotlib import cm
 import math
 import pytest
 
-@pytest.mark.skip("not really pass fail")
+#@pytest.mark.skip("not really pass fail")
 def test_profiling():
     random.seed(1235434)
     rand_coef = [random.random() for i in range(15)]

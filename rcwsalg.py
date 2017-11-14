@@ -15,14 +15,12 @@ def rttoxy(rho, theta):
     return x,y
 
 def computeImages(wavefront, useDiags = False, givederivs = False):
-    y_res = len(wavefront)
-    x_res = len(wavefront[0])
+    dx, dy = tuple(np.gradient(wavefront.image))
+    d2x, d2y = np.gradient(dx), np.gradient(dy)
 
-    # Generate X Y coords
-    X = np.arange(-1, 1, 2 / x_res)
-    Y = np.arange(-1, 1, 2 / y_res)
+    laplacian = d2x + d2y
 
-    X, Y = np.meshgrid(X, Y)
+    dn = np.sqrt(np.power(dx, 2) + np.power(dy, 2))
 
     secder = [[0 for i in range(x_res)] for j in range(y_res)]
     firstder = [[0 for i in range(x_res)] for j in range(y_res)]
@@ -54,7 +52,7 @@ def computeImages(wavefront, useDiags = False, givederivs = False):
 
 if __name__ == "__main__":
     coeff = [0,0,0,0,0,0.1]
-    wavefront = zernike.generate_wavefront(coeff, 200, 200)
+    wavefront = zernike.generate_wavefront(coeff, 200, 200, 100)
     im1, im2 = computeImages(wavefront)
 
     plt.subplot(1, 3, 1)
