@@ -37,7 +37,7 @@ class wavefront:
         for idx, coeff in enumerate(coefficients):
             Z += coeff * np.vectorize(self.zernikefunctions[idx + 1])(rho, theta)
 
-        self.image = Z * (rho < radius / x_res).astype(np.int)
+        self.image = Z #* (rho < radius / x_res).astype(np.int)
         self.Xcoords = X
         self.Ycoords = Y
         self.x_res = x_res
