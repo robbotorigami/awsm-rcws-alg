@@ -6,6 +6,7 @@
     <orderEntry type="jdk" jdkName="Python 3.5.2 virtualenv at ~/venv-awsm" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="poppy" />
+    <orderEntry type="module" module-name="cwfs" />
   </component>
   <component name="PackageRequirementsSettings">
     <option name="requirementsPath" value="" />

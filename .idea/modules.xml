@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/awsm-rcws-alg.iml" filepath="$PROJECT_DIR$/.idea/awsm-rcws-alg.iml" />
+      <module fileurl="file://$USER_HOME$/cwfs/.idea/cwfs.iml" filepath="$USER_HOME$/cwfs/.idea/cwfs.iml" />
       <module fileurl="file://$USER_HOME$/poppy/.idea/poppy.iml" filepath="$USER_HOME$/poppy/.idea/poppy.iml" />
     </modules>
   </component>
