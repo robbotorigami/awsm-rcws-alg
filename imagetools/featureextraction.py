@@ -1,9 +1,14 @@
-import generator as gen
-import preprocessing as pp
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt, matplotlib.cm as cm, matplotlib.patches as mpatches
-import scipy as scipy
+
+#Return a masked binary image of the perimeter
+def create_mask(im1, im2):
+    avg1 = np.mean(im1)
+    avg2 = np.mean(im2)
+    im1 = (im1 > avg1*0.25).astype(int)
+    im2 = (im2 > avg2*0.25).astype(int)
+    return im1, im2
 
 #find the center of mass for the two images
 def find_com(im1, im2):
@@ -31,28 +36,25 @@ def shift_images(im1, im2, cd):
     return im1, im2
 
 #returns the tip and tilt, and the images with tip tilt removed
-def parse_tip_tilt(preim, postim, defocus):
-    focallength = 0.6096
+def parse_tip_tilt(preim, postim, opt):
     c1, c2 = find_com(preim, postim)
     cd = np.array([e1 - e2 for e1, e2 in zip(c1, c2)])
     preim, posim = shift_images(preim, postim, cd)
+    
     #calculate rate (in pix/m)
-    dzdr = cd * defocus/(2*focallength*(focallength - defocus))
-    #Convert to m/m
-    dzdr *= 5.86e-6
-    #Convert to waves/5cm
-    dzdr *= 20/0.55e-6
-    #Convert from ptp to rms
-    dzdr /= 3
+    dzdr = cd * opt.defocus/(2*opt.focal_length*(opt.focal_length - opt.defocus))
 
+    #Convert to m/m
+    dzdr *= opt.pixel_size
     return dzdr, preim, posim
 
-#Will be used for later functionality
-def get_signal(preim, postim, mask):
-    S = preim - postim
-    S /= preim + postim
-    S[np.logical_not(mask)] = 0
-    return S
+    #Convert to waves/5cm
+    dzdr /= opt.wavelength
+    dzdr *= opt.aperature
+    #Convert from ptp to rms
+    mag = dzdr/(3**0.5)
+
+    return mag, preim, posim
 
 def cv_blob_detect(preim, postim):
     # Setup SimpleBlobDetector parameters.
