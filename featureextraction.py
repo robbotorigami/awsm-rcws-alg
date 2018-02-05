@@ -54,6 +54,46 @@ def get_signal(preim, postim, mask):
     S[np.logical_not(mask)] = 0
     return S
 
+def cv_blob_detect(preim, postim):
+    # Setup SimpleBlobDetector parameters.
+    params = cv2.SimpleBlobDetector_Params()
+
+    # Change thresholds
+    params.minThreshold = 5;
+    params.maxThreshold = 200;
+
+    # Filter by Area.
+    params.filterByArea = True
+    params.minArea = 15
+
+    # Filter by Circularity
+    params.filterByCircularity = True
+    params.minCircularity = 0.1
+
+    # Filter by Convexity
+    params.filterByConvexity = False
+    params.minConvexity = 0.87
+
+    # Filter by Inertia
+    params.filterByInertia = False
+    params.minInertiaRatio = 0.01
+
+    # Create a detector with the parameters
+    detector = cv2.SimpleBlobDetector_create(params)
+
+    preim = (preim*10).astype('uint8')
+    # Detect blobs.
+    keypoints = detector.detect(preim)
+    print(keypoints)
+    # Draw detected blobs as red circles.
+    # cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS ensures the size of the circle corresponds to the size of blob
+    im_with_keypoints = cv2.drawKeypoints(preim, keypoints, np.array([]), (0, 0, 255),
+                                          cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+    cv2.namedWindow('Keypoints', cv2.WINDOW_NORMAL)
+    # Show keypoints
+    cv2.imshow("Keypoints", im_with_keypoints)
+    cv2.waitKey(0)
+
 if __name__ == "__main__":
     #Go through a range of defocuses and identify tip and tilt
 
@@ -75,6 +115,11 @@ if __name__ == "__main__":
     dfl = np.arange(0.4e-3, 1.0e-3, 0.05e-3)
     error = []
 
+    preim, postim = gen.generate_images(zern, defocus= 1.6e-3)
+    preim, postim = pp.normalize(preim, postim)
+    preim, postim = pp.blur_images(preim, postim)
+    cv_blob_detect(preim, postim)
+    exit()
     for defocus in dfl:
         preim, postim = gen.generate_images(zern, defocus = defocus)
         preim, postim = pp.normalize(preim, postim)
