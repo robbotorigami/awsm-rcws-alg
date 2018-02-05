@@ -1,6 +1,4 @@
-import matplotlib.pyplot as plt, matplotlib.cm as cm
 import proper
-import math
 import numpy as np
 import cv2
 import os, sys

@@ -40,19 +40,18 @@ def parse_tip_tilt(preim, postim, opt):
     c1, c2 = find_com(preim, postim)
     cd = np.array([e1 - e2 for e1, e2 in zip(c1, c2)])
     preim, posim = shift_images(preim, postim, cd)
-    
+
     #calculate rate (in pix/m)
     dzdr = cd * opt.defocus/(2*opt.focal_length*(opt.focal_length - opt.defocus))
 
     #Convert to m/m
     dzdr *= opt.pixel_size
-    return dzdr, preim, posim
 
     #Convert to waves/5cm
     dzdr /= opt.wavelength
     dzdr *= opt.aperature
     #Convert from ptp to rms
-    mag = dzdr/(3**0.5)
+    mag = dzdr/4
 
     return mag, preim, posim
 

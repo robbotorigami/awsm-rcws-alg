@@ -2,26 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a55d028d-5041-48a1-9910-605e2438df85" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imagetools/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imagetools/lsst.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wftools/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wftools/datatypes.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Poppy Test.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ProperTest.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Propertest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Simulation of expected wavefronts using custom library.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/generator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/postfocal_image_BAK.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/prefocal_image_BAK.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rcwsalg.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simple_telescope.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test_zernike.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/zernike.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/featureextraction.py" afterPath="$PROJECT_DIR$/imagetools/featureextraction.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/preprocessing.py" afterPath="$PROJECT_DIR$/imagetools/preprocess.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/displaytools/rcws.py" afterPath="$PROJECT_DIR$/displaytools/rcws.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forwardmodel/generator.py" afterPath="$PROJECT_DIR$/forwardmodel/generator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imagetools/featureextraction.py" afterPath="$PROJECT_DIR$/imagetools/featureextraction.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testfile.py" afterPath="$PROJECT_DIR$/testfile.py" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/cwfs/examples/example1.ipynb" afterPath="$USER_HOME$/cwfs/examples/example1.ipynb" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/cwfs/examples/example2.ipynb" afterPath="$USER_HOME$/cwfs/examples/example2.ipynb" />
@@ -39,8 +23,8 @@
       <file leaf-file-name="testfile.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testfile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="252">
+              <caret line="17" column="55" lean-forward="true" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -48,11 +32,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pyplot.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/matplotlib/pyplot.py">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="55908">
-              <caret line="3156" column="0" lean-forward="false" selection-start-line="3156" selection-start-column="0" selection-end-line="3156" selection-end-column="0" />
+            <state relative-caret-position="36">
+              <caret line="2" column="37" lean-forward="false" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -61,7 +55,7 @@
       <file leaf-file-name="preprocess.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imagetools/preprocess.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="288">
               <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -83,10 +77,10 @@
       <file leaf-file-name="generator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forwardmodel/generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+            <state relative-caret-position="648">
+              <caret line="36" column="25" lean-forward="true" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
               <folding>
-                <element signature="e#0#52#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="featureextraction.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="featureextraction.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imagetools/featureextraction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="42" column="4" lean-forward="false" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+            <state relative-caret-position="270">
+              <caret line="47" column="26" lean-forward="false" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -127,7 +121,7 @@
       <file leaf-file-name="rcws.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/displaytools/rcws.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1206">
+            <state relative-caret-position="1142">
               <caret line="67" column="22" lean-forward="false" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
               <folding />
             </state>
@@ -164,7 +158,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$USER_HOME$/poppy/notebooks/POPPY Examples.ipynb" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$USER_HOME$/poppy_bak/notebooks/POPPY Examples.ipynb" />
         <option value="$USER_HOME$/cwfs/examples/example2.ipynb" />
@@ -197,10 +190,11 @@
         <option value="$PROJECT_DIR$/imagetools/preprocess.py" />
         <option value="$PROJECT_DIR$/displaytools/rcws.py" />
         <option value="$PROJECT_DIR$/wftools/datatypes.py" />
-        <option value="$PROJECT_DIR$/forwardmodel/generator.py" />
-        <option value="$PROJECT_DIR$/testfile.py" />
         <option value="$PROJECT_DIR$/forwardmodel/prefocal_image.py" />
+        <option value="$PROJECT_DIR$/forwardmodel/generator.py" />
         <option value="$PROJECT_DIR$/imagetools/featureextraction.py" />
+        <option value="$PROJECT_DIR$/testfile.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -594,7 +588,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3026585" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3026585" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -644,13 +638,6 @@
     <entry file="file://$USER_HOME$/poppy/notebooks/POPPY Examples.ipynb" />
     <entry file="file://$USER_HOME$/poppy/poppy/optics.py" />
     <entry file="file://$PROJECT_DIR$/example_airy.png" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/poppy_bak/notebooks/POPPY Examples.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -662,13 +649,6 @@
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="37" lean-forward="false" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -813,14 +793,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rcwsalg.py" />
     <entry file="file://$PROJECT_DIR$/preprocessing.py" />
-    <entry file="file://$PROJECT_DIR$/displaytools/rcws.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1206">
-          <caret line="67" column="22" lean-forward="false" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/matplotlib/pyplot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55908">
@@ -829,31 +801,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wftools/datatypes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="19" column="28" lean-forward="false" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forwardmodel/generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -873,9 +825,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/displaytools/rcws.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1142">
+          <caret line="67" column="22" lean-forward="false" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forwardmodel/generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="36" column="25" lean-forward="true" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/imagetools/preprocess.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="288">
           <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -885,11 +855,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/imagetools/featureextraction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="42" column="4" lean-forward="false" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+        <state relative-caret-position="270">
+          <caret line="47" column="26" lean-forward="false" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="17" column="55" lean-forward="true" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="37" lean-forward="false" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
