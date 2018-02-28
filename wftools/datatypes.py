@@ -1,6 +1,6 @@
 import numpy as np
 
-class zernikie_wfe:
+class zernike_wfe:
     names = ['1_PISTON',
              '2_X tilt',
              '3_Y tilt',

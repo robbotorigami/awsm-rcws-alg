@@ -4,13 +4,17 @@ import numpy as np
 ## Provides standard methods to pre process the image
 
 def normalize(im1, im2):
-    norm1 = im1/im1.mean()
-    norm2 = im2/im2.mean()
+    norm1 = im1/im1.max()
+    norm2 = im2/im2.max()
     return norm1, norm2
 
-def blur_images(im1, im2, bluramount = 5):
-    blur1 = cv2.GaussianBlur(im1, (bluramount, bluramount), 0)
-    blur2 = cv2.GaussianBlur(im2, (bluramount, bluramount), 0)
+def blur_images(im1, im2, bluramount = 5, gaussian = True):
+    if gaussian:
+        blur1 = cv2.GaussianBlur(im1, (bluramount, bluramount), 0)
+        blur2 = cv2.GaussianBlur(im2, (bluramount, bluramount), 0)
+    else:
+        blur1 = cv2.blur(im1, (bluramount, bluramount), 0)
+        blur2 = cv2.blur(im2, (bluramount, bluramount), 0)
     return blur1, blur2
 
 def inside_mask(im1, im2, threshold = 1):

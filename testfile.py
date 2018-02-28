@@ -1,18 +1,34 @@
 from forwardmodel import generator
 from displaytools import rcws
-from wftools.datatypes import zernikie_wfe, optical_setup
+from wftools.datatypes import zernike_wfe, optical_setup
 from imagetools import preprocess, featureextraction
+import matplotlib.pyplot as plt
+import numpy as np
 
 dispwin = rcws.window(False)
 
+wfe = zernike_wfe([0, 0,0, 0, 0.07])
+opt = optical_setup(5.86e-6, 0.6096, 0.55e-6, 1e-3, 0.05)
+pre_im, pos_im = generator.generate_images(wfe, opt)
+pre_im, pos_im = preprocess.blur_images(pre_im, pos_im, 9)
+pre_im, pos_im = preprocess.normalize(pre_im, pos_im)
+#dispwin.display_prepost(pre_im, pos_im, cross_section = True)
+pre_mask, pos_mask, comb_mask = masks = featureextraction.create_masks(pre_im, pos_im)
+#dispwin.display_prepost_masks(pre_im, pos_im, masks)
+laplacian = featureextraction.extract_laplacians(pre_im, pos_im, masks, opt)
+lapmask = (laplacian != 0).astype(np.int) * 1
+normals = featureextraction.extract_normals(pre_im, pos_im, masks, opt)
+dispwin.display_features(pre_im, pos_im, laplacian, normals)
 
-wfe = zernikie_wfe([0, 0.07])
+
+"""
+wfe = zernike_wfe([0, 0.07])
 
 opt = optical_setup(5.86e-6, 0.6096, 0.55e-6, 1e-3, 0.05)
 
 pre_im, pos_im = generator.generate_images(wfe, opt)
 #dispwin.display_prepost(pre_im, pos_im, cross_section = True)
-pre_im, pos_im = preprocess.blur_images(pre_im, pos_im, 13)
+pre_im, pos_im = preprocess.blur_images(pre_im, pos_im, 1)
 pre_im, pos_im = preprocess.normalize(pre_im, pos_im)
 dispwin.display_prepost(pre_im, pos_im, cross_section = True)
 com1, com2 = featureextraction.find_com(pre_im, pos_im)
@@ -22,10 +38,8 @@ ttmag, pre_im, pos_im = featureextraction.parse_tip_tilt(pre_im, pos_im, opt)
 print(ttmag)
 
 
-
 #dispwin.display_prepost(pre_im, pos_im, cross_section=True)
 
-"""
 for i in range(11):
     for defocus in [0.1e-3, 0.720e-3, 1e-3, 10e-3]:
         opt.defocus = defocus

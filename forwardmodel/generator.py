@@ -5,7 +5,7 @@ import os, sys
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
-from wftools.datatypes import zernikie_wfe, optical_setup
+from wftools.datatypes import zernike_wfe, optical_setup
 
 #uses proper to simulate the expected images
 def generate_images(zern, opt):

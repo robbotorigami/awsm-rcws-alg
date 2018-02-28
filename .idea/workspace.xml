@@ -2,8 +2,64 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a55d028d-5041-48a1-9910-605e2438df85" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.cache/v/cache/lastfailed" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/awsm-rcws-alg.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archieve/Poppy Test.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archieve/ProperTest.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archieve/Propertest.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archieve/Simulation of expected wavefronts using custom library.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archieve/simple_telescope.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archieve/test_zernike.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archieve/zernike.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/displaytools/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/displaytools/rcws.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/forwardmodel/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/forwardmodel/generator.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/forwardmodel/postfocal_image.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/forwardmodel/prefocal_image.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/imagetools/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/imagetools/featureextraction.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/imagetools/lsst.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/imagetools/preprocess.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/1_PISTON_10000um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/1_PISTON_1000um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/1_PISTON_100um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/1_PISTON_720um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/2_X tilt_10000um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/2_X tilt_1000um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/2_X tilt_100um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/2_X tilt_720um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/3_Y tilt_100um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/OurZernikies_100um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/OurZernikies_1600um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/OurZernikies_200um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/OurZernikies_3200um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/OurZernikies_400um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/OurZernikies_6400um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/OurZernikies_800um.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/testfile.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_100umpost.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_100umpre.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_1600umpost.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_1600umpre.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_200umpost.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_200umpre.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_3200umpost.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_3200umpre.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_400umpost.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_400umpre.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_6400umpost.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_6400umpre.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_800umpost.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_800umpre.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/wftools/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/wftools/datatypes.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/cwfs/examples/example1.ipynb" afterPath="$USER_HOME$/cwfs/examples/example1.ipynb" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/cwfs/examples/example2.ipynb" afterPath="$USER_HOME$/cwfs/examples/example2.ipynb" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/cwfs/python/lsst/cwfs/algorithm.py" afterPath="$USER_HOME$/cwfs/python/lsst/cwfs/algorithm.py" />
@@ -17,11 +73,107 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="testfile.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testfile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="7" lean-forward="true" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+            <state relative-caret-position="360">
+              <caret line="20" column="60" lean-forward="false" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="featureextraction.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/imagetools/featureextraction.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="63" column="7" lean-forward="false" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="finitedifferences.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/algorithm/finitedifferences.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="datatypes.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wftools/datatypes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="19" column="48" lean-forward="true" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="preprocess.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imagetools/preprocess.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cv2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/779424732/cv2/cv2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="7828" column="4" lean-forward="false" selection-start-line="7828" selection-start-column="4" selection-end-line="7828" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="generator.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/forwardmodel/generator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="558">
+              <caret line="31" column="4" lean-forward="false" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="prop_begin.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/PyPROPER3-1.0.0-py3.5-linux-x86_64.egg/proper/prop_begin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="prop_lens.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/PyPROPER3-1.0.0-py3.5-linux-x86_64.egg/proper/prop_lens.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rcws.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/displaytools/rcws.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="93" column="38" lean-forward="true" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -86,14 +238,16 @@
         <option value="$PROJECT_DIR$/imagetools/__init__.py" />
         <option value="$PROJECT_DIR$/imagetools/lsst.py" />
         <option value="$PROJECT_DIR$/featureextraction.py" />
-        <option value="$PROJECT_DIR$/imagetools/preprocess.py" />
-        <option value="$PROJECT_DIR$/displaytools/rcws.py" />
         <option value="$PROJECT_DIR$/wftools/datatypes.py" />
-        <option value="$PROJECT_DIR$/forwardmodel/prefocal_image.py" />
-        <option value="$PROJECT_DIR$/forwardmodel/generator.py" />
-        <option value="$PROJECT_DIR$/imagetools/featureextraction.py" />
-        <option value="$PROJECT_DIR$/testfile.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/forwardmodel/prefocal_image.py" />
+        <option value="$PROJECT_DIR$/imagetools/preprocess.py" />
+        <option value="$PROJECT_DIR$/forwardmodel/generator.py" />
+        <option value="$PROJECT_DIR$/displaytools/rcws.py" />
+        <option value="$PROJECT_DIR$/testfile.py" />
+        <option value="$PROJECT_DIR$/algorithm/__init__.py" />
+        <option value="$PROJECT_DIR$/algorithm/finitedifferences.py" />
+        <option value="$PROJECT_DIR$/imagetools/featureextraction.py" />
       </list>
     </option>
   </component>
@@ -119,6 +273,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -130,6 +286,30 @@
               <item name="awsm-rcws-alg" type="b2602c69:ProjectViewProjectNode" />
               <item name="awsm-rcws-alg" type="47feb1d3:ProjectViewModuleNode" />
               <item name="awsm-rcws-alg" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="awsm-rcws-alg" type="b2602c69:ProjectViewProjectNode" />
+              <item name="awsm-rcws-alg" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="awsm-rcws-alg" type="462c0819:PsiDirectoryNode" />
+              <item name="algorithm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="awsm-rcws-alg" type="b2602c69:ProjectViewProjectNode" />
+              <item name="awsm-rcws-alg" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="awsm-rcws-alg" type="462c0819:PsiDirectoryNode" />
+              <item name="forwardmodel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="awsm-rcws-alg" type="b2602c69:ProjectViewProjectNode" />
+              <item name="awsm-rcws-alg" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="awsm-rcws-alg" type="462c0819:PsiDirectoryNode" />
+              <item name="imagetools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="awsm-rcws-alg" type="b2602c69:ProjectViewProjectNode" />
+              <item name="awsm-rcws-alg" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="awsm-rcws-alg" type="462c0819:PsiDirectoryNode" />
+              <item name="wftools" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="awsm-rcws-alg" type="b2602c69:ProjectViewProjectNode" />
@@ -177,8 +357,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -459,35 +637,24 @@
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14231806" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3026585" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3026585" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997955" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997955" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3026585" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14231806" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997955" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -502,28 +669,17 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/imagetools/featureextraction.py</url>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/testfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1062">
-          <caret line="59" column="25" lean-forward="false" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/poppy_bak/notebooks/POPPY Examples.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/poppy/notebooks/POPPY Examples.ipynb" />
-    <entry file="file://$USER_HOME$/poppy/poppy/optics.py" />
-    <entry file="file://$PROJECT_DIR$/example_airy.png" />
     <entry file="file://$USER_HOME$/poppy_bak/notebooks/POPPY Examples.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -670,13 +826,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/forwardmodel/postfocal_image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="38" lean-forward="false" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rcwsalg.py" />
     <entry file="file://$PROJECT_DIR$/preprocessing.py" />
     <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/matplotlib/pyplot.py">
@@ -686,59 +835,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wftools/datatypes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="28" lean-forward="false" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forwardmodel/prefocal_image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imagetools/lsst.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="57" lean-forward="false" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/displaytools/rcws.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1142">
-          <caret line="67" column="22" lean-forward="false" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forwardmodel/generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="36" column="25" lean-forward="true" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imagetools/preprocess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imagetools/featureextraction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="47" column="26" lean-forward="false" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="17" column="55" lean-forward="true" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -751,9 +851,119 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="7" lean-forward="true" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+        <state relative-caret-position="72">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forwardmodel/postfocal_image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="67" lean-forward="false" selection-start-line="7" selection-start-column="67" selection-end-line="9" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forwardmodel/prefocal_image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" lean-forward="true" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/PyPROPER3-1.0.0-py3.5-linux-x86_64.egg/proper/prop_lens.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.5/site-packages/PyPROPER3-1.0.0-py3.5-linux-x86_64.egg/proper/prop_begin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/779424732/cv2/cv2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="7828" column="4" lean-forward="false" selection-start-line="7828" selection-start-column="4" selection-end-line="7828" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forwardmodel/generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="31" column="4" lean-forward="false" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imagetools/preprocess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wftools/datatypes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="48" lean-forward="true" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/displaytools/rcws.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="93" column="38" lean-forward="true" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="60" lean-forward="false" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/finitedifferences.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imagetools/featureextraction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="63" column="7" lean-forward="false" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,14 +1,68 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt, matplotlib.cm as cm, matplotlib.patches as mpatches
+from scipy import interpolate
+from scipy.ndimage import morphology
+
 
 #Return a masked binary image of the perimeter
-def create_mask(im1, im2):
-    avg1 = np.mean(im1)
-    avg2 = np.mean(im2)
-    im1 = (im1 > avg1*0.25).astype(int)
-    im2 = (im2 > avg2*0.25).astype(int)
-    return im1, im2
+def create_masks(im1, im2):
+    max1 = np.max(im1)
+    max2 = np.max(im2)
+    im1 = (im1 > max1*0.5).astype(int)
+    im2 = (im2 > max2*0.5).astype(int)
+    return im1, im2, im1*im2
+
+def extract_laplacians(preim, posim, masks, opt):
+    diff = (preim - posim)/(preim+posim)
+    laplacian = opt.focal_length*(opt.focal_length - opt.defocus)/(opt.defocus) * masks[2] * diff
+    return laplacian
+
+def rt_to_xy(rho, theta, shape):
+    x = int(rho * np.cos(theta) + shape[0]/2)
+    y = int(rho * np.sin(theta) + shape[1]/2)
+    return x, y
+
+def extract_normals(preim, posim, masks, opt):
+    diff = (preim - posim)/(preim+posim)
+    #For a number of points around the spot
+    pointlist = []
+    for theta in np.linspace(0, 2*np.pi, 9):
+        #1. Determine the first pixel in the direction of theta
+        #   outside the combined mask
+        rho = 0
+        x, y = rt_to_xy(rho, theta, diff.shape)
+        while masks[2][y, x] > 0.5:
+            rho += 1
+            x, y = rt_to_xy(rho, theta, diff.shape)
+        #Now we have rho and theta of the first pixel outside of the mask
+        #We want to keep the pixels location
+        pix = (x, y)
+        #Now, find the integral of the rest of the pixels in that direction
+        x, y = rt_to_xy(rho, theta, diff.shape)
+        accum = 0
+        while x >= 0 and y >= 0 and x < diff.shape[0] and y < diff.shape[1]:
+            accum += diff[y,x]
+            rho += 1
+            x, y = rt_to_xy(rho, theta, diff.shape)
+        print(pix, accum)
+        pointlist.append((pix[0],pix[1], accum))
+    print(pointlist)
+    xs, ys, values = zip(*pointlist)
+    print(xs, ys, values)
+    sampler = interpolate.interp2d(xs, ys, values)
+    xcoords = range(diff.shape[0])
+    ycoords = range(diff.shape[1])
+    normals = sampler(xcoords, ycoords)
+    normals *= (1-masks[2])
+    normals *= morphology.binary_dilation(masks[2])
+    """
+    import matplotlib.pyplot as plt
+    plt.plot(xs, ys, 'ro')
+    plt.imshow(normals)
+    plt.show()
+    """
+    return normals
 
 #find the center of mass for the two images
 def find_com(im1, im2):
@@ -54,46 +108,6 @@ def parse_tip_tilt(preim, postim, opt):
     mag = dzdr/4
 
     return mag, preim, posim
-
-def cv_blob_detect(preim, postim):
-    # Setup SimpleBlobDetector parameters.
-    params = cv2.SimpleBlobDetector_Params()
-
-    # Change thresholds
-    params.minThreshold = 5;
-    params.maxThreshold = 200;
-
-    # Filter by Area.
-    params.filterByArea = True
-    params.minArea = 15
-
-    # Filter by Circularity
-    params.filterByCircularity = True
-    params.minCircularity = 0.1
-
-    # Filter by Convexity
-    params.filterByConvexity = False
-    params.minConvexity = 0.87
-
-    # Filter by Inertia
-    params.filterByInertia = False
-    params.minInertiaRatio = 0.01
-
-    # Create a detector with the parameters
-    detector = cv2.SimpleBlobDetector_create(params)
-
-    preim = (preim*10).astype('uint8')
-    # Detect blobs.
-    keypoints = detector.detect(preim)
-    print(keypoints)
-    # Draw detected blobs as red circles.
-    # cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS ensures the size of the circle corresponds to the size of blob
-    im_with_keypoints = cv2.drawKeypoints(preim, keypoints, np.array([]), (0, 0, 255),
-                                          cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
-    cv2.namedWindow('Keypoints', cv2.WINDOW_NORMAL)
-    # Show keypoints
-    cv2.imshow("Keypoints", im_with_keypoints)
-    cv2.waitKey(0)
 
 if __name__ == "__main__":
     #Go through a range of defocuses and identify tip and tilt
