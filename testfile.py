@@ -2,23 +2,39 @@ from forwardmodel import generator
 from displaytools import rcws
 from wftools.datatypes import zernike_wfe, optical_setup
 from imagetools import preprocess, featureextraction
+from algorithm import finitedifferences
 import matplotlib.pyplot as plt
 import numpy as np
 
+
+
 dispwin = rcws.window(False)
 
-wfe = zernike_wfe([0, 0,0, 0, 0.07])
+wfe = zernike_wfe([0, 0.01])
 opt = optical_setup(5.86e-6, 0.6096, 0.55e-6, 1e-3, 0.05)
 pre_im, pos_im = generator.generate_images(wfe, opt)
-pre_im, pos_im = preprocess.blur_images(pre_im, pos_im, 9)
+pre_im, pos_im = preprocess.blur_images(pre_im, pos_im, 21)
 pre_im, pos_im = preprocess.normalize(pre_im, pos_im)
 #dispwin.display_prepost(pre_im, pos_im, cross_section = True)
 pre_mask, pos_mask, comb_mask = masks = featureextraction.create_masks(pre_im, pos_im)
 #dispwin.display_prepost_masks(pre_im, pos_im, masks)
 laplacian = featureextraction.extract_laplacians(pre_im, pos_im, masks, opt)
-lapmask = (laplacian != 0).astype(np.int) * 1
 normals = featureextraction.extract_normals(pre_im, pos_im, masks, opt)
 dispwin.display_features(pre_im, pos_im, laplacian, normals)
+wavefront = finitedifferences.solve_wavefront(laplacian, normals)
+plt.imshow(wavefront)
+plt.show()
+
+import matplotlib.pyplot as plt, matplotlib.cm as cm
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+x = range(wavefront.shape[1])
+y = range(wavefront.shape[0])
+X, Y = np.meshgrid(x,y)
+ax.plot_surface(X, Y, wavefront, cmap=cm.coolwarm)
+plt.show()
 
 
 """

@@ -2,64 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a55d028d-5041-48a1-9910-605e2438df85" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.cache/v/cache/lastfailed" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/awsm-rcws-alg.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/archieve/Poppy Test.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/archieve/ProperTest.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/archieve/Propertest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/archieve/Simulation of expected wavefronts using custom library.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/archieve/simple_telescope.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/archieve/test_zernike.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/archieve/zernike.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/displaytools/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/displaytools/rcws.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/forwardmodel/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/forwardmodel/generator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/forwardmodel/postfocal_image.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/forwardmodel/prefocal_image.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imagetools/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imagetools/featureextraction.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imagetools/lsst.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imagetools/preprocess.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/1_PISTON_10000um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/1_PISTON_1000um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/1_PISTON_100um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/1_PISTON_720um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/2_X tilt_10000um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/2_X tilt_1000um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/2_X tilt_100um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/2_X tilt_720um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/3_Y tilt_100um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/OurZernikies_100um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/OurZernikies_1600um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/OurZernikies_200um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/OurZernikies_3200um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/OurZernikies_400um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/OurZernikies_6400um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plots/OurZernikies_800um.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testfile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_100umpost.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_100umpre.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_1600umpost.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_1600umpre.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_200umpost.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_200umpre.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_3200umpost.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_3200umpre.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_400umpost.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_400umpre.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_6400umpost.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_6400umpre.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_800umpost.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/OurZernikies_800umpre.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/wftools/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/wftools/datatypes.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/algorithm/finitedifferences.py" afterPath="$PROJECT_DIR$/algorithm/finitedifferences.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/displaytools/rcws.py" afterPath="$PROJECT_DIR$/displaytools/rcws.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forwardmodel/generator.py" afterPath="$PROJECT_DIR$/forwardmodel/generator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imagetools/featureextraction.py" afterPath="$PROJECT_DIR$/imagetools/featureextraction.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testfile.py" afterPath="$PROJECT_DIR$/testfile.py" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/cwfs/examples/example1.ipynb" afterPath="$USER_HOME$/cwfs/examples/example1.ipynb" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/cwfs/examples/example2.ipynb" afterPath="$USER_HOME$/cwfs/examples/example2.ipynb" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/cwfs/python/lsst/cwfs/algorithm.py" afterPath="$USER_HOME$/cwfs/python/lsst/cwfs/algorithm.py" />
@@ -76,8 +23,8 @@
       <file leaf-file-name="testfile.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testfile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="60" lean-forward="false" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
+            <state relative-caret-position="342">
+              <caret line="19" column="51" lean-forward="true" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -88,8 +35,8 @@
       <file leaf-file-name="featureextraction.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/imagetools/featureextraction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="63" column="7" lean-forward="false" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+            <state relative-caret-position="252">
+              <caret line="68" column="23" lean-forward="true" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -100,8 +47,8 @@
       <file leaf-file-name="finitedifferences.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/algorithm/finitedifferences.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-378">
+              <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -140,8 +87,8 @@
       <file leaf-file-name="generator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forwardmodel/generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="31" column="4" lean-forward="false" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+            <state relative-caret-position="270">
+              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -172,8 +119,8 @@
       <file leaf-file-name="rcws.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/displaytools/rcws.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="93" column="38" lean-forward="true" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
+            <state relative-caret-position="0">
+              <caret line="0" column="33" lean-forward="true" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -242,11 +189,11 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/forwardmodel/prefocal_image.py" />
         <option value="$PROJECT_DIR$/imagetools/preprocess.py" />
-        <option value="$PROJECT_DIR$/forwardmodel/generator.py" />
-        <option value="$PROJECT_DIR$/displaytools/rcws.py" />
-        <option value="$PROJECT_DIR$/testfile.py" />
         <option value="$PROJECT_DIR$/algorithm/__init__.py" />
+        <option value="$PROJECT_DIR$/displaytools/rcws.py" />
+        <option value="$PROJECT_DIR$/forwardmodel/generator.py" />
         <option value="$PROJECT_DIR$/algorithm/finitedifferences.py" />
+        <option value="$PROJECT_DIR$/testfile.py" />
         <option value="$PROJECT_DIR$/imagetools/featureextraction.py" />
       </list>
     </option>
@@ -675,7 +622,7 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -897,16 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/forwardmodel/generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="4" lean-forward="false" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imagetools/preprocess.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -923,24 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/displaytools/rcws.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="93" column="38" lean-forward="true" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="60" lean-forward="false" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/algorithm/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -949,18 +868,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/algorithm/finitedifferences.py">
+    <entry file="file://$PROJECT_DIR$/displaytools/rcws.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="33" lean-forward="true" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="52" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forwardmodel/generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/finitedifferences.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-378">
+          <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="51" lean-forward="true" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/imagetools/featureextraction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="63" column="7" lean-forward="false" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+        <state relative-caret-position="252">
+          <caret line="68" column="23" lean-forward="true" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

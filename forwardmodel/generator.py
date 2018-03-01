@@ -34,4 +34,8 @@ def generate_images(zern, opt):
     pre_im = cv2.resize(np.array(pre_im), (npix, npix))
     pos_im = cv2.resize(np.array(pos_im), (npix, npix))
 
+
+    #Correct proper offset
+
+
     return pre_im, pos_im

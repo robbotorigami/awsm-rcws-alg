@@ -15,7 +15,10 @@ def create_masks(im1, im2):
 
 def extract_laplacians(preim, posim, masks, opt):
     diff = (preim - posim)/(preim+posim)
-    laplacian = opt.focal_length*(opt.focal_length - opt.defocus)/(opt.defocus) * masks[2] * diff
+    laplacian = opt.focal_length*(opt.focal_length - opt.defocus)/(opt.defocus) * diff
+    laplacian += 1e-6
+    laplacian *= masks[2]
+    laplacian *= 1e-6
     return laplacian
 
 def rt_to_xy(rho, theta, shape):
@@ -56,6 +59,10 @@ def extract_normals(preim, posim, masks, opt):
     normals = sampler(xcoords, ycoords)
     normals *= (1-masks[2])
     normals *= morphology.binary_dilation(masks[2])
+
+    #Perform scaling on the array
+    normals *= opt.focal_length * (opt.focal_length - opt.defocus) / (opt.defocus) * opt.pixel_size
+    normals *= 1e3
     """
     import matplotlib.pyplot as plt
     plt.plot(xs, ys, 'ro')

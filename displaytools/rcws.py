@@ -97,6 +97,9 @@ class window:
         plt.subplot(nrows, nimages, 5)
         plt.title("Normals")
         plt.imshow(normals, cmap=cm.gray)
+        plt.subplot(nrows, nimages, 6)
+        plt.title("Combined")
+        plt.imshow(normals + laplacian, cmap=cm.gray)
         if self.updatable:
             plt.draw()
             plt.pause(0.001)
