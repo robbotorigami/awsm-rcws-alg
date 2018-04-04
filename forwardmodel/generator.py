@@ -31,11 +31,14 @@ def generate_images(zern, opt):
     #invert postfocal image
     pos_im = [[pos_im[gridsize - y-1][gridsize - x-1] for x in range(gridsize)] for y in range(gridsize)]
 
+    #Discretize according to the distance of the camera
     pre_im = cv2.resize(np.array(pre_im), (npix, npix))
     pos_im = cv2.resize(np.array(pos_im), (npix, npix))
 
 
-    #Correct proper offset
+    #Correct weird offset from proper (NOTE: Work in progress, may not be accurate for defocus != 1e-3
+    M = np.float32([[1,0,-0.01513],[0,1,-0.01513]])
+    pos_im = cv2.warpAffine(pos_im,M,pos_im.shape)
 
 
     return pre_im, pos_im

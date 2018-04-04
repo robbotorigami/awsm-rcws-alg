@@ -18,7 +18,7 @@ def extract_laplacians(preim, posim, masks, opt):
     laplacian = opt.focal_length*(opt.focal_length - opt.defocus)/(opt.defocus) * diff
     laplacian += 1e-6
     laplacian *= masks[2]
-    laplacian *= 1e-6
+    laplacian *= 1e-4
     return laplacian
 
 def rt_to_xy(rho, theta, shape):
@@ -28,6 +28,42 @@ def rt_to_xy(rho, theta, shape):
 
 def extract_normals(preim, posim, masks, opt):
     diff = (preim - posim)/(preim+posim)
+    normalsx = 0*preim
+    normalsy = 0*posim
+
+    height, width = masks[0].shape
+
+    #For each row in the image, comput the x derivative on the left and right
+    for y in range(height):
+        #Find the width on the left
+        dxl = masks[0][y,:width//2] - masks[1][y,:width//2]
+        #Find the width on the right
+        dxr = masks[0][y, width//2:] - masks[1][y,width//2:]
+
+        #Find the pixel to store the normal on the left and right
+        xl = np.argmax(masks[2][y,:] > 0)
+        xr = width - np.argmax(masks[2][y,::-1] > 0)
+
+        #Insert the value into the x normal matrix
+        normalsx[y, xl] = dxl
+        normalsx[y, xr] = dxr
+
+    # For each column in the image, compute the y derivative on the top and bottom
+    for x in range(width):
+        # Find the width on the left
+        dyb = masks[0][height//2:, x] - masks[1][height//2:, x]
+        # Find the width on the right
+        dyt = masks[0][:height//2, x] - masks[1][height//2:, x]
+
+        # Find the pixel to store the normal on the left and right
+        yt = np.argmax(masks[2][:, x] > 0)
+        yb = height - np.argmax(masks[2][::-1, x] > 0)
+
+        # Insert the value into the x normal matrix
+        normalsx[yb, x] = dyb
+        normalsx[yt, x] = dyt
+
+
     #For a number of points around the spot
     pointlist = []
     for theta in np.linspace(0, 2*np.pi, 9):
@@ -48,11 +84,11 @@ def extract_normals(preim, posim, masks, opt):
             accum += diff[y,x]
             rho += 1
             x, y = rt_to_xy(rho, theta, diff.shape)
-        print(pix, accum)
+        #print(pix, accum)
         pointlist.append((pix[0],pix[1], accum))
-    print(pointlist)
+    #print(pointlist)
     xs, ys, values = zip(*pointlist)
-    print(xs, ys, values)
+    #print(xs, ys, values)
     sampler = interpolate.interp2d(xs, ys, values)
     xcoords = range(diff.shape[0])
     ycoords = range(diff.shape[1])
@@ -62,13 +98,6 @@ def extract_normals(preim, posim, masks, opt):
 
     #Perform scaling on the array
     normals *= opt.focal_length * (opt.focal_length - opt.defocus) / (opt.defocus) * opt.pixel_size
-    normals *= 1e3
-    """
-    import matplotlib.pyplot as plt
-    plt.plot(xs, ys, 'ro')
-    plt.imshow(normals)
-    plt.show()
-    """
     return normals
 
 #find the center of mass for the two images
