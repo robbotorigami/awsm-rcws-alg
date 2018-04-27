@@ -5,22 +5,17 @@ from PyQt5.QtOpenGL import QGLWidget
 import OpenGL.GL as gl
 import OpenGL.arrays.vbo as glvbo
 import matplotlib.pyplot as plt, matplotlib.cm as cm
+import threading
+import time
 
 from analyzetests import loadTrial1DataSets, loadSetImages
 from wftools.datatypes import zernike_wfe, optical_setup
 from imagetools import preprocess, featureextraction
 from algorithm import finitedifferences
+from displaytools import wavefrontvisshader
 
 # Window creation function.
 def create_window(window_class):
-    """Create a Qt window in Python, or interactively in IPython with Qt GUI
-    event loop integration:
-        # in ~/.ipython/ipython_config.py
-        c.TerminalIPythonApp.gui = 'qt'
-        c.TerminalIPythonApp.pylab = 'qt'
-    See also:
-        http://ipython.org/ipython-doc/dev/interactive/qtconsole.html#qt-and-the-qtconsole
-    """
     app_created = False
     app = QtCore.QCoreApplication.instance()
     if app is None:
@@ -68,51 +63,13 @@ def link_shader_program(vertex_shader, fragment_shader):
         raise RuntimeError(gl.glGetProgramInfoLog(program))
     return program
 
-# Vertex shader
-VS = """
 
-uniform float z1;
-uniform float z2;
-uniform float z3;
-uniform float z4;
-uniform float z5;
-uniform float z6;
-
-float z1_mag(float rho, float theta) {return z1;}
-float z2_mag(float rho, float theta) {return z2*2.0*rho*cos(theta);}
-float z3_mag(float rho, float theta) {return z3*2.0*rho*sin(theta);}
-float z4_mag(float rho, float theta) {return z4*sqrt(3.0)*(2.0*rho*rho-1.0);}
-float z5_mag(float rho, float theta) {return z5*sqrt(6.0)*rho*rho*sin(2.0*theta);}
-float z6_mag(float rho, float theta) {return z6*sqrt(6.0)*rho*rho*cos(2.0*theta);}
-
-varying vec4 color;
-
-void main()
-{
-    float rho = sqrt(gl_Vertex.x*gl_Vertex.x+gl_Vertex.z*gl_Vertex.z);
-    float theta = atan(gl_Vertex.z, gl_Vertex.x);
-    float mag = z1_mag(rho, theta) + z2_mag(rho, theta) + z3_mag(rho, theta)
-     + z4_mag(rho, theta) + z5_mag(rho, theta) + z6_mag(rho, theta);
-    mag = mag * 5.0;
-    color = vec4(mag + 3.0, 0.0, -mag, 1.0);
-    //  Set vertex position
-    gl_Position = gl_ModelViewProjectionMatrix * (gl_Vertex + 0.1*vec4(0.0, mag, 0.0, 1.0));
-}
-"""
-
-# Fragment shader
-FS = """
-varying vec4 color;
-void main()
-{
-   gl_FragColor = color;
-}
-"""
 
 class GLPlotWidget(QGLWidget):
     # default window size
     width, height = 600, 600
-    ph, th = 20, 0
+    ph, th = 20, 330
+    lightth = 0
 
     def initializeGL(self):
         """Initialize OpenGL, VBOs, upload data on the GPU, etc."""
@@ -120,21 +77,81 @@ class GLPlotWidget(QGLWidget):
         gl.glClearColor(0, 0, 0, 0)
         # create a Vertex Buffer Object with the specified data
         # compile the vertex shader
-        vs = compile_vertex_shader(VS)
+        vs = compile_vertex_shader(wavefrontvisshader.VS)
         # compile the fragment shader
-        fs = compile_fragment_shader(FS)
+        fs = compile_fragment_shader(wavefrontvisshader.FS)
         # compile the vertex shader
         self.shaders_program = link_shader_program(vs, fs)
 
+        self.zernikies = 6*[0]
+        self.maxval = 1
+        self.minval = -1
+        self.wireframe = False
+        self.dim = 1.0
+        gl.glClearDepth(1.0)
+        gl.glClearColor(0.6, 0.7, 0.7, 1.0)
+        gl.glDepthFunc(gl.GL_LESS)
+        gl.glEnable(gl.GL_DEPTH_TEST)
+
     def paintGL(self):
+        w = self.width*self.devicePixelRatio()
+        h = self.height*self.devicePixelRatio()
+        asp = w/h
+        gl.glViewport(0,0,w,h)
+        gl.glMatrixMode(gl.GL_PROJECTION)
         gl.glLoadIdentity()
-        gl.glMatrixMode(gl.GL_PROJECTION);
+        zmin = self.dim/16
+        zmax = 16*self.dim
+        ydim = zmin*np.tan(55*np.pi/360)
+        xdim = ydim*asp
+        gl.glFrustum(-xdim, +xdim, -ydim, +ydim, zmin, zmax)
+
+        gl.glMatrixMode(gl.GL_MODELVIEW)
+        gl.glLoadIdentity()
+        gl.glTranslated(0, 0, -2*self.dim)
         gl.glRotated(self.ph,1,0,0)
         gl.glRotated(self.th,0,1,0)
 
         """Paint the scene."""
         # clear the buffer
-        gl.glClear(gl.GL_COLOR_BUFFER_BIT)
+        gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT)
+        gl.glDisable(gl.GL_LIGHTING)
+
+        ## Draw Axes
+        center = np.array([-0.5, -0.5, -0.5])
+        xend = center + np.array([1, 0, 0])
+        yend = center + np.array([0, 1, 0])
+        zend = center + np.array([0, 0, 1])
+        gl.glUseProgram(0)
+        gl.glBegin(gl.GL_LINES)
+        gl.glColor(0.0,0.0,0.0,0.0)
+        gl.glVertex3f(center[0], center[1], center[2])
+        gl.glVertex3f(xend[0], xend[1], xend[2])
+        gl.glVertex3f(center[0], center[1], center[2])
+        gl.glVertex3f(yend[0], yend[1], yend[2])
+        gl.glVertex3f(center[0], center[1], center[2])
+        gl.glVertex3f(zend[0], zend[1], zend[2])
+        gl.glEnd()
+
+        ## Do lighting
+        gl.glColor3f(1,1,1)
+        gl.glPushMatrix()
+        gl.glTranslated(1.0*np.cos(self.lightth *np.pi/180),
+                                                    1.5, 1.0 *np.sin(self.lightth*np.pi/180))
+        gl.glScaled(0.1, 0.1, 0.1)
+        gl.glPointSize(10)
+        gl.glBegin(gl.GL_POINTS)
+        gl.glVertex3f(0,0,0)
+        gl.glEnd()
+        gl.glPopMatrix()
+
+        gl.glEnable(gl.GL_NORMALIZE)
+        gl.glEnable(gl.GL_LIGHTING)
+        gl.glEnable(gl.GL_LIGHT0)
+        gl.glLightfv(gl.GL_LIGHT0, gl.GL_POSITION, [1.0*np.cos(self.lightth *np.pi/180),
+                                                    1.5, 1.0 *np.sin(self.lightth*np.pi/180)])
+
+
         gl.glUseProgram(self.shaders_program)
         gl.glUniform1f(gl.glGetUniformLocation( self.shaders_program, 'z1'), np.float32(self.zernikies[0]))
         gl.glUniform1f(gl.glGetUniformLocation( self.shaders_program, 'z2'), np.float32(self.zernikies[1]))
@@ -142,17 +159,53 @@ class GLPlotWidget(QGLWidget):
         gl.glUniform1f(gl.glGetUniformLocation( self.shaders_program, 'z4'), np.float32(self.zernikies[3]))
         gl.glUniform1f(gl.glGetUniformLocation( self.shaders_program, 'z5'), np.float32(self.zernikies[4]))
         gl.glUniform1f(gl.glGetUniformLocation( self.shaders_program, 'z6'), np.float32(self.zernikies[5]))
-        # draw "count" points from the VBO
-        step = 0.05
-        for i in np.arange(-0.5, 0.5, step):
-            for j in np.arange(-0.5, 0.5, step):
-                if (i**2 + j**2) < 0.5**2:
-                    gl.glBegin(gl.GL_QUADS)
-                    gl.glVertex3f(i, 0, j)
-                    gl.glVertex3f(i+step, 0, j)
-                    gl.glVertex3f(i+step, 0, j+step)
-                    gl.glVertex3f(i, 0, j+step)
-                    gl.glEnd()
+        gl.glUniform1f(gl.glGetUniformLocation( self.shaders_program, 'max'), np.float32(self.maxval))
+        gl.glUniform1f(gl.glGetUniformLocation( self.shaders_program, 'min'), np.float32(self.minval))
+
+
+        # Draw wavefront
+        rt_to_xy = lambda r, t: (np.cos(t)*r, np.sin(t)*r)
+        radiusSteps = 0.1
+        thetaSteps = 2*np.pi/32
+        # draw center of circle
+        radius = radiusSteps
+        if self.wireframe:
+            gl.glBegin(gl.GL_LINES)
+        else:
+            gl.glBegin(gl.GL_TRIANGLES)
+        for theta in reversed(np.arange(0, 2*np.pi, thetaSteps)):
+            theta2 = theta + thetaSteps
+            p1 = rt_to_xy(0, theta)
+            p2 = rt_to_xy(radius, theta)
+            p3 = rt_to_xy(radius, theta2)
+            gl.glVertex3f(p1[0], 0, p1[1])
+            gl.glVertex3f(p2[0], 0, p2[1])
+            gl.glVertex3f(p3[0], 0, p3[1])
+        gl.glEnd()
+
+        #draw rest of circle
+        if self.wireframe:
+            gl.glBegin(gl.GL_LINES)
+        else:
+            gl.glBegin(gl.GL_QUADS)
+        for radius1 in np.arange(radiusSteps, 0.7, radiusSteps):
+            for theta1 in np.arange(0, 2*np.pi + thetaSteps, thetaSteps):
+                radius2 = radius1 + radiusSteps
+                theta2 = theta1 + thetaSteps
+                p1 = rt_to_xy(radius1, theta1)
+                p2 = rt_to_xy(radius1, theta2)
+                p3 = rt_to_xy(radius2, theta2)
+                p4 = rt_to_xy(radius2, theta1)
+                gl.glVertex3f(p1[0], 0, p1[1])
+                gl.glVertex3f(p2[0], 0, p2[1])
+                gl.glVertex3f(p3[0], 0, p3[1])
+                gl.glVertex3f(p4[0], 0, p4[1])
+                if self.wireframe:
+                    gl.glVertex3f(p2[0], 0, p2[1])
+                    gl.glVertex3f(p3[0], 0, p3[1])
+                    gl.glVertex3f(p4[0], 0, p4[1])
+                    gl.glVertex3f(p1[0], 0, p1[1])
+        gl.glEnd()
 
 
     def resizeGL(self, width, height):
@@ -163,8 +216,29 @@ class GLPlotWidget(QGLWidget):
         gl.glViewport(0, 0, width, height)
 
     def spin(self):
-        self.th += 1
+        self.lightth += 2
+        self.lightth %= 360
         self.updateGL()
+
+    def setWireframe(self, wireframe = True):
+        self.wireframe = wireframe
+        self.updateGL()
+
+    def mousePressEvent(self, event):
+        self.oldPos = event.pos()
+
+    def mouseMoveEvent(self, event):
+        dpos = event.pos() - self.oldPos
+        self.th = (self.th - dpos.x()) % 360
+        self.ph = (self.ph - dpos.y()) % 360
+        self.oldPos = event.pos()
+        self.updateGL()
+
+    def wheelEvent(self, event):
+        if event.angleDelta().y() > 0:
+            self.dim += 0.1
+        else:
+            self.dim -= 0.1
 
 if __name__ == '__main__':
     # import numpy for generating random data points
@@ -187,68 +261,121 @@ if __name__ == '__main__':
             self.widget = GLPlotWidget()
             self.widget.updateGL()
             layout.addWidget(self.widget,0,0,10,1)
-            layout.setColumnStretch(0,400)
-            layout.setColumnMinimumWidth(0,400)
+            layout.setColumnStretch(0,800)
+            layout.setColumnMinimumWidth(0,800)
             window.setLayout(layout)
 
 
-            # a figure instance to plot on
-            self.figure = Figure()
-            # this is the Canvas Widget that displays the `figure`
-            # it takes the `figure` instance as a parameter to __init__
-            self.canvas = FigureCanvas(self.figure)
-            layout.addWidget(self.canvas, 1,1)
+            #Matplotlib figures
+            self.prefocalfig = Figure()
+            self.postfocalfig = Figure()
+            self.wave2dfig = Figure()
+            self.barfig = Figure()
+            self.prefocalcanvas = FigureCanvas(self.prefocalfig)
+            self.postfocalcanvas = FigureCanvas(self.postfocalfig)
+            self.wave2dcanvas = FigureCanvas(self.wave2dfig)
+            self.barcanvas = FigureCanvas(self.barfig)
 
+            layout.addWidget(self.prefocalcanvas, 1,1, 5, 1)
+            layout.addWidget(self.postfocalcanvas, 1,2, 5, 1)
+            layout.addWidget(self.wave2dcanvas, 5,1, 5, 1)
+            layout.addWidget(self.barcanvas, 5,2, 5, 1)
 
-            #Run the processing code
+            self.trialLabel = QtWidgets.QLabel("None")
+            layout.addWidget(self.trialLabel, 10,0)
+
+            run_tests_button = QtWidgets.QPushButton("Run Tests")
+            run_tests_button.clicked.connect(self.run_tests)
+            layout.addWidget(run_tests_button, 10,1)
+
+            self.mode_butt = QtWidgets.QPushButton("Wireframe")
+            self.mode_butt.clicked.connect(self.handleDisplayMode)
+            layout.addWidget(self.mode_butt, 10, 2)
+
+            # Core animation timer
+            timer = QtCore.QTimer(self.widget)
+            timer.timeout.connect(self.widget.spin)
+            timer.start(10)
+
+            self.setCentralWidget(window)
+            self.show()
+            return
+
+        def handleDisplayMode(self):
+            if self.mode_butt.text() == "Wireframe":
+                self.mode_butt.setText("Solid")
+                self.widget.setWireframe(True)
+            else:
+                self.mode_butt.setText("Wireframe")
+                self.widget.setWireframe(False)
+
+        def run_tests(self):
+            self.stop_event=threading.Event()
+            self.c_thread=threading.Thread(target=self.thread_run_tests, args=(self.stop_event,))
+            self.c_thread.start()
+
+        def thread_run_tests(self, stopevent):
+            for i in range(1, 5):
+                self.dispTrial(i)
+                time.sleep(10)
+
+        def processTrial(self, trialNum):
+            # Load trial images
             sets = loadTrial1DataSets()
-            pre_im, pos_im = loadSetImages(sets[2])
+            pre_im, pos_im = loadSetImages(sets[trialNum])
+
+            # Set up optics parameters
             wfe = zernike_wfe([0, 0, 0.07])
             opt = optical_setup(5.86e-6, 0.6096, 0.55e-6, 1e-3, 0.05)
+
+            # Preprocess images
             pre_im, pos_im = preprocess.crop(pre_im, pos_im)
             pre_raw, pos_raw = pre_im, pos_im
             pre_im, pos_im = preprocess.blur_images(pre_im, pos_im, 21)
             pre_im, pos_im = preprocess.normalize(pre_im, pos_im)
+
+            # Extract Features
             coms, pre_im, pos_im = featureextraction.parse_tip_tilt(pre_im, pos_im, opt)
             masks = featureextraction.create_masks(pre_im, pos_im)
             laplacian = featureextraction.extract_laplacians(pre_im, pos_im, masks, opt)
             normals = featureextraction.extract_normals(pre_im, pos_im, masks, opt)
+
+            # Recreate wavefront and parse zernike coefficients
             wavefront = finitedifferences.solve_wavefront(laplacian, normals)
             recovered = wfe.from_image(wavefront)
-            img = recovered.as_image(512, 512, 1, True)
             coef = recovered.coef
-            coef[0] = 0
-            self.widget.zernikies = 100*np.array(coef)
+            waveimg = recovered.as_image(256, 256, 1, True)
 
+            return coef, pre_raw, pos_raw, waveimg
+
+        def dispTrial(self, trialNum):
+            self.trialLabel.setText("Computing...")
+            coef, pre_raw, pos_raw, img = self.processTrial(trialNum)
+            self.trialLabel.setText("Trial {}".format(trialNum))
 
             # Create non 3d Plots
             # create an axis
-            ax = self.figure.add_subplot(221)
+            ax = self.prefocalfig.gca()
             ax.clear()
             # plot data
             ax.imshow(pre_raw, cmap=cm.gray, interpolation='none')
-            self.canvas.draw()
-            ax = self.figure.add_subplot(222)
+            ax.set_title("Prefocal Image")
+            ax = self.postfocalfig.gca()
             ax.clear()
             # plot data
             ax.imshow(pos_raw, cmap=cm.gray, interpolation='none')
-            self.canvas.draw()
-            ax = self.figure.add_subplot(223)
+            ax.set_title("Postfocal Image")
+            ax = self.wave2dfig.gca()
             ax.clear()
             # plot data
+            ax.set_title("2D Reconstructed Wavefront")
             ax.imshow(img, cmap=cm.hot, interpolation='none')
-            self.canvas.draw()
 
-            recovered.coef[1] -= coms[0]
-            recovered.coef[2] -= coms[1]
-
-            coef = recovered.coef
+            #Scale coefficients by maximum
             coef = np.array(coef)
-
             coef = coef / (np.max(np.abs(coef)))
 
             colors = []
-
             thresh = 0.1
             for i, val in enumerate(coef):
                 if np.abs(val) > thresh:
@@ -256,17 +383,19 @@ if __name__ == '__main__':
                 else:
                     colors.append('g')
 
-            ax = self.figure.add_subplot(224)
+            ax = self.barfig.gca()
             ax.bar(range(len(coef)), coef, color=colors)
             ax.set_xticklabels([str(i) for i in range(7)])
+            ax.set_title("Zernike Coefficient Amplitudes")
 
+            self.prefocalcanvas.draw()
+            self.postfocalcanvas.draw()
+            self.wave2dcanvas.draw()
+            self.barcanvas.draw()
+            self.widget.zernikies = coef
+            self.widget.max = np.max(img)
+            self.widget.min = np.min(img)
 
-            timer = QtCore.QTimer(self.widget)
-            timer.timeout.connect(self.widget.spin)
-            timer.start(10)
-
-            self.setCentralWidget(window)
-            self.show()
             return
 
     # show the window

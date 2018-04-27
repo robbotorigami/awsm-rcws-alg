@@ -58,7 +58,7 @@ def extract_normals(preim, posim, masks, opt):
     # plt.subplot(1,3,3)
     # plt.imshow(diff, cmap=cm.gray, interpolation='none')
     # plt.show()
-    print([p[2] for p in pointlist])
+    #print([p[2] for p in pointlist])
     xs, ys, values = zip(*pointlist)
     sampler = interpolate.interp2d(xs, ys, values)
     xcoords = range(diff.shape[1])

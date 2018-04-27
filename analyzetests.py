@@ -1,4 +1,3 @@
-from forwardmodel import generator
 from displaytools import rcws
 from wftools.datatypes import zernike_wfe, optical_setup
 from imagetools import preprocess, featureextraction

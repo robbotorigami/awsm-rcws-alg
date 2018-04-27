@@ -3,7 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$USER_HOME$/.local/lib/python3.5/site-packages" />
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="Python 3.5.2 virtualenv at ~/CSCI4239/projvenv" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.5 (venv-awsm-rcws-alg)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="poppy" />
     <orderEntry type="module" module-name="cwfs" />
