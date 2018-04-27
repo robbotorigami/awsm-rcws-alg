@@ -7,6 +7,8 @@ def xy_to_rt(x, y, shape):
     theta = (np.arctan2(-y, x))%(2*np.pi)
     return rho, theta
 
+
+
 def solve_wavefront(laplacian, normal):
     waveheight = laplacian.shape[0]
     wavewidth = laplacian.shape[1]
@@ -97,7 +99,6 @@ def solve_wavefront(laplacian, normal):
     #Solve Matrix equation
     #print(M)
     waveelems = np.linalg.lstsq(np.array(M), np.array(f))[0]
-    print(waveelems)
     #Insert into wavefront
     wavefront = np.zeros_like(laplacian)
     inv_indx = {v: k for k, v in indicies_dict.items()}

@@ -23,7 +23,7 @@ image = [[finitedifferences.xy_to_rt(i,j,shape)[1] for i in range(100)] for j in
 
 dispwin = rcws.window(False)
 
-wfe = zernike_wfe([0, 0.07])
+wfe = zernike_wfe([0, 0,0.07])
 opt = optical_setup(5.86e-6, 0.6096, 0.55e-6, 1e-3, 0.05)
 pre_im, pos_im = generator.generate_images(wfe, opt)
 pre_im, pos_im = preprocess.blur_images(pre_im, pos_im, 21)
@@ -40,7 +40,7 @@ from scipy.ndimage import filters
 plt.subplot(1,3,1)
 plt.imshow(filters.laplace(wavefront)*comb_mask, cmap = cm.gray)
 
-rad_grad = cv2.resize(np.array(wavefront), (wavefront.shape[0]+2,wavefront.shape[1]+2))
+rad_grad = np.transpose(cv2.resize(np.array(wavefront), (wavefront.shape[0]+2,wavefront.shape[1]+2)))
 rad_grad = rad_grad - cv2.copyMakeBorder(wavefront, top=1, bottom=1, left=1, right=1, borderType= cv2.BORDER_CONSTANT)
 rad_grad = rad_grad[1:-1, 1:-1]
 rad_grad *= 1-comb_mask

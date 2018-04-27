@@ -14,55 +14,20 @@ def create_masks(im1, im2):
     return im1, im2, im1*im2
 
 def extract_laplacians(preim, posim, masks, opt):
-    diff = (preim - posim)/(preim+posim)
+    diff = (preim - posim)
     laplacian = opt.focal_length*(opt.focal_length - opt.defocus)/(opt.defocus) * diff
     laplacian += 1e-6
     laplacian *= masks[2]
-    laplacian *= 1e-4
+    laplacian *= 1e-10
     return laplacian
 
 def rt_to_xy(rho, theta, shape):
-    x = int(rho * np.cos(theta) + shape[0]/2)
-    y = int(rho * np.sin(theta) + shape[1]/2)
+    x = int(rho * np.cos(theta) + shape[1]/2)
+    y = int(rho * np.sin(theta) + shape[0]/2)
     return x, y
 
 def extract_normals(preim, posim, masks, opt):
-    diff = (preim - posim)/(preim+posim)
-    normalsx = 0*preim
-    normalsy = 0*posim
-
-    height, width = masks[0].shape
-
-    #For each row in the image, comput the x derivative on the left and right
-    for y in range(height):
-        #Find the width on the left
-        dxl = masks[0][y,:width//2] - masks[1][y,:width//2]
-        #Find the width on the right
-        dxr = masks[0][y, width//2:] - masks[1][y,width//2:]
-
-        #Find the pixel to store the normal on the left and right
-        xl = np.argmax(masks[2][y,:] > 0)
-        xr = width - np.argmax(masks[2][y,::-1] > 0)
-
-        #Insert the value into the x normal matrix
-        normalsx[y, xl] = dxl
-        normalsx[y, xr] = dxr
-
-    # For each column in the image, compute the y derivative on the top and bottom
-    for x in range(width):
-        # Find the width on the left
-        dyb = masks[0][height//2:, x] - masks[1][height//2:, x]
-        # Find the width on the right
-        dyt = masks[0][:height//2, x] - masks[1][height//2:, x]
-
-        # Find the pixel to store the normal on the left and right
-        yt = np.argmax(masks[2][:, x] > 0)
-        yb = height - np.argmax(masks[2][::-1, x] > 0)
-
-        # Insert the value into the x normal matrix
-        normalsx[yb, x] = dyb
-        normalsx[yt, x] = dyt
-
+    diff = (preim - posim)
 
     #For a number of points around the spot
     pointlist = []
@@ -79,49 +44,53 @@ def extract_normals(preim, posim, masks, opt):
         pix = (x, y)
         #Now, find the integral of the rest of the pixels in that direction
         x, y = rt_to_xy(rho, theta, diff.shape)
-        accum = 0
-        while x >= 0 and y >= 0 and x < diff.shape[0] and y < diff.shape[1]:
+        accum = 1e-10
+        while x >= 0 and y >= 0 and x < diff.shape[1] and y < diff.shape[0]:
             accum += diff[y,x]
             rho += 1
             x, y = rt_to_xy(rho, theta, diff.shape)
         #print(pix, accum)
         pointlist.append((pix[0],pix[1], accum))
-    #print(pointlist)
+    # plt.subplot(1,3,1)
+    # plt.imshow(preim, cmap=cm.gray, interpolation='none')
+    # plt.subplot(1,3,2)
+    # plt.imshow(posim, cmap=cm.gray, interpolation='none')
+    # plt.subplot(1,3,3)
+    # plt.imshow(diff, cmap=cm.gray, interpolation='none')
+    # plt.show()
+    print([p[2] for p in pointlist])
     xs, ys, values = zip(*pointlist)
-    #print(xs, ys, values)
     sampler = interpolate.interp2d(xs, ys, values)
-    xcoords = range(diff.shape[0])
-    ycoords = range(diff.shape[1])
+    xcoords = range(diff.shape[1])
+    ycoords = range(diff.shape[0])
     normals = sampler(xcoords, ycoords)
     normals *= (1-masks[2])
     normals *= morphology.binary_dilation(masks[2])
 
     #Perform scaling on the array
-    normals *= opt.focal_length * (opt.focal_length - opt.defocus) / (opt.defocus) * opt.pixel_size
+    #TODO: Make this valid!
+    normals *= 10
+    #normals *= 1/opt.defocus **2
+    #normals *= opt.focal_length * (opt.focal_length - opt.defocus) / ((opt.defocus)**4) * opt.pixel_size
     return normals
 
 #find the center of mass for the two images
 def find_com(im1, im2):
-    c1, c2 = [0, 0], [0, 0]
-    s1, s2 = 0,0
-    res = len(im1)
-    for x in range(res):
-        for y in range(res):
-            c1[0] += x*im1[y][x]
-            c1[1] += y*im1[y][x]
-            c2[0] += x*im2[y][x]
-            c2[1] += y*im2[y][x]
-            s1 += im1[y][x]
-            s2 += im2[y][x]
-    return [c/s1 for c in c1], [c/s2 for c in c2]
+    x = np.array([range(im1.shape[1]) for i in range(im1.shape[0])])
+    y = np.array([[j for i in range(im1.shape[1])] for j in range(im1.shape[0])])
+
+    s1, s2 = np.sum(im1),np.sum(im2)
+    c1 = [np.sum(x * im1)/s1, np.sum(y * im1)/s1]
+    c2 = [np.sum(x * im2)/s2, np.sum(y * im2)/s2]
+    return c1, c2
 
 #Shift the images according to the provided values
-def shift_images(im1, im2, cd):
+def shift_images(im1, im2, c1, c2):
     num_rows, num_cols = im1.shape[:2]
 
-    translation_matrix = np.float32([[1, 0, -cd[0]/2], [0, 1, -cd[1]/2]])
+    translation_matrix = np.float32([[1, 0, num_cols//2-c1[0]], [0, 1, num_rows//2-c1[1]]])
     im1 = cv2.warpAffine(im1, translation_matrix, (num_cols, num_rows))
-    translation_matrix = np.float32([[1, 0, cd[0]/2], [0, 1, cd[1]/2]])
+    translation_matrix = np.float32([[1, 0, num_cols//2-c2[0]], [0, 1, num_rows//2-c2[1]]])
     im2 = cv2.warpAffine(im2, translation_matrix, (num_cols, num_rows))
     return im1, im2
 
@@ -129,8 +98,12 @@ def shift_images(im1, im2, cd):
 def parse_tip_tilt(preim, postim, opt):
     c1, c2 = find_com(preim, postim)
     cd = np.array([e1 - e2 for e1, e2 in zip(c1, c2)])
-    preim, posim = shift_images(preim, postim, cd)
+    preim, posim = shift_images(preim, postim, c1, c2)
 
+
+    #TODO: Make this valid!
+    mag = cd/opt.defocus
+    """
     #calculate rate (in pix/m)
     dzdr = cd * opt.defocus/(2*opt.focal_length*(opt.focal_length - opt.defocus))
 
@@ -142,6 +115,7 @@ def parse_tip_tilt(preim, postim, opt):
     dzdr *= opt.aperature
     #Convert from ptp to rms
     mag = dzdr/4
+    """
 
     return mag, preim, posim
 

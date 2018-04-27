@@ -4,7 +4,7 @@ import numpy as np
 import math
 
 
-class wavefront:
+class zernike_coefficient:
     #lambdas for each of the zernike modes
     zernikefunctions = {
         1 : lambda rho, theta: 1,
@@ -51,8 +51,8 @@ class wavefront:
     #Build a wavefront object from an amplitude map
     @classmethod
     def fromimage(cls, image):
-        y_res = len(image)
-        x_res = len(image[0])
+        y_res = image.shape[0]
+        x_res = image.shape[1]
 
         # Generate X Y coords
         X = np.arange(-1, 1, 2 / x_res)
@@ -65,8 +65,10 @@ class wavefront:
 
         for xr, yr, zr in zip(X, Y, image):
             for x, y, z in zip(xr, yr, zr):
+                if z == 0:
+                    continue
                 rho = math.sqrt(x ** 2 + y ** 2)
-                theta = math.atan2(y, x)
+                theta = math.arctan2(y, x)
                 if rho > 1:
                     continue
                 coefficients = [coefficients[i] + z * cls.zernikefunctions[i + 1](rho, theta) for i in range(15)]

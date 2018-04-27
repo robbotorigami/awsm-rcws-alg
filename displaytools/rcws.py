@@ -7,15 +7,20 @@ class window:
             plt.ion()
             plt.show()
 
-    def display_prepost(self, pre_im, pos_im, display_difference = True, save_to = None, cross_section = False):
+    def display_prepost(self, pre_im, pos_im, display_difference = True, save_to = None, cross_section = False, coms = None):
+        plt.clf()
         nimages = 3 if display_difference else 2
         nrows = 2 if cross_section else 1
         plt.subplot(nrows, nimages, 1)
         plt.title("Prefocal")
         plt.imshow(pre_im, cmap=cm.gray)
+        if coms is not None:
+            plt.plot(coms[0][0], coms[0][1], 'ro')
         plt.subplot(nrows, nimages, 2)
         plt.title("Postfocal")
         plt.imshow(pos_im, cmap=cm.gray)
+        if coms is not None:
+            plt.plot(coms[1][0], coms[1][1], 'ro')
         if display_difference:
             plt.subplot(nrows, nimages, 3)
             plt.title("Difference")
